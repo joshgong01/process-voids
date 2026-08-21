@@ -84,7 +84,7 @@ class DerivationPipeline(object):
         if self.pn_method == EbiWeights.OCCURANCE or self.pn_method is None:
             ebi = EbiOccurance()
         else:
-            raise ValueError("Not implemented ebi weights method used:", self.pn_method)
+            raise ValueError("Not implemented Wbi weights method used:", self.pn_method)
         time_start_ns_agns = time.process_time_ns()
         C, global_C = em.coninciding_agns(skip_dict)
         time_stop_ns_agns = time.process_time_ns()
@@ -98,9 +98,9 @@ class DerivationPipeline(object):
         print(activity_to_id)
         if self.pn_log is not None:
             id_filtered_log_rf = ebi.write_log(self.pn_log, activity_to_id)
-            ebi.ebi_slpn(out=slpn_path)
+            ebi.ebi_slpn()
             ebi.validate_slpn(self.tree, slpn_path)
-            ebi.update_slpn_weights(self.tree, slpn_path)
+            ebi.update_visible_taus(self.tree, slpn_path)
             time_start_ns_model_paths = time.process_time_ns()
             trace_probs, trace_counts, prob_time = ebi.trace_probs(var_C, model=slpn_path)
             time_stop_ns_model_paths = time.process_time_ns()
@@ -150,7 +150,7 @@ class DerivationPipeline(object):
 
         print("---=== Unfolding skip alignments ===---")
         print("Avg. number of agns for a trace variant [incl timeouts] (ns):", sum(len(v) for v in self.var_C.values())/len(self.var_C))
-        print("Total number of agns [incl timeouts]:", sum(len(v) for v in self.var_C.values()))
+        print("Total number of agns [incl timeouts] (ns):", sum(len(v) for v in self.var_C.values()))
         print("Avg. time per set of agns for a skip alignment (ns):", self.agn_time[0])
         print("Total time for all agns (ns):", self.agn_time[1])
 

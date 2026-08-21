@@ -10,14 +10,12 @@ if DEBUG:
     print( f'Importing pm4py {datetime.datetime.now()}')
 import pm4py
 
+from skipalignments import *
 
 from coveragemass import *
-from derivation import DerivationPipeline, EbiWeights
-import probabilities
-from processtree import *
 import slpn_importer
 
-probabilities.EBI_EXECUTABLE="./ebi"   # Path to ebi link
+probabilities.EBI_EXECUTABLE="./Ebi-x86_64-windows.exe"   # Path to ebi link
 
 MM_COST = 100000
 TAU_COST = 0

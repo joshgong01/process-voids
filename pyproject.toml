@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "process-voids"
+version = "0.1.0"
+description = "Process voids and skip probability analysis"
+requires-python = ">=3.12"
+dependencies = [
+    "pm4py>=2.7,<=2.8",
+    "rustxes>=0.2.10",
+    "skipalignments @ file:./skipalignments"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
