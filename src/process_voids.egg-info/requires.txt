@@ -1,3 +1,0 @@
-pm4py<=2.8,>=2.7
-rustxes>=0.2.10
-skipalignments @ file:./skipalignments
