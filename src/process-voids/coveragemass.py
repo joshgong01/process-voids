@@ -53,7 +53,7 @@ Pre: Tree has weights
 
 '''
 =====================================================================================
-Coverage by Duration (Definition 4.1)
+Coverage by Duration
 
 Uses the implied duration of the activities present in the model but missing from the
 log to estimate coverage.
@@ -141,9 +141,7 @@ def log_to_traces(log):
 
 def coverage_by_duration(pt:ProcessTree, log, skip_probs:dict, total_dur=None):
     '''
-    cov_dt(m, m_sub, L) = (1 - P_skip(m, m_sub, L)) *  sum_{sigma in L} sdur(m_sub,sigma)
-                                                        -----------------------------------
-                                                        sum_{sigma in L} dur(sigma)
+    cov_dt(m, m_sub, L) = (1 - P_skip(m, m_sub, L)) *  sum_{sigma in L} sdur(m_sub,sigma)/sum_{sigma in L} dur(sigma)
 
     pt is treated as the submodel m_sub (pt in gsub(m)) whose coverage is computed.
     P_skip(m, m_sub, L) is taken from skip_probs[pt], mirroring how coverage_mass
